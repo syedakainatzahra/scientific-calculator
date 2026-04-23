@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scientific Calculator</title>
+
+<style>
+body {
+  background: #7faebc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110vh;
+  font-family: Arial;
+}
+
+.calculator {
+  width: 320px;
+  background: #ddd;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #333;
+}
+
+.top {
+  height: 40px;
+  background: #4a1f1f;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin: 5px 0;
+}
+
+#display {
+  width: 100%;
+  height: 70px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.row button {
+  width: 23%;
+  padding: 10px;
+  border: none;
+  background: #bbb;
+  border-radius: 8px;
+}
+
+.science {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.science button {
+  padding: 15px;
+  background: #7f8c8d;
+  border: none;
+  border-radius: 10px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.main button {
+  padding: 18px;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+  <div class="top"></div>
+  <h2>Scientific Calculator</h2>
+
+  <input type="text" id="display" disabled>
+
+  <div class="row">
+    <button>SHIFT</button>
+    <button>ALPHA</button>
+    <button>MODE</button>
+    <button onclick="clearDisplay()">ON</button>
+  </div>
+
+  <div class="science">
+    <button onclick="add('Math.sin(')">sin</button>
+    <button onclick="add('Math.cos(')">cos</button>
+    <button onclick="add('Math.tan(')">tan</button>
+    <button onclick="add('Math.PI')">π</button>
+
+    <button onclick="add('Math.log10(')">log</button>
+    <button onclick="add('Math.log(')">ln</button>
+    <button onclick="add('Math.sqrt(')">√</button>
+    <button onclick="add('**')">xʸ</button>
+  </div>
+
+  <div class="main">
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button onclick="clearDisplay()">AC</button>
+
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button onclick="del()">DEL</button>
+
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button onclick="add('*')">×</button>
+
+    <button onclick="add('0')">0</button>
+    <button onclick="add('.')">.</button>
+    <button onclick="add('%')">%</button>
+    <button onclick="add('/')">÷</button>
+
+    <button onclick="add('-')">−</button>
+    <button onclick="add('+')">+</button>
+    <button onclick="add('**2')">x²</button>
+    <button onclick="calculate()">=</button>
+  </div>
+</div>
+
+<script>
+let display = document.getElementById("display");
+
+function add(value) {
+  display.value += value;
+}
+
+function clearDisplay() {
+  display.value = "";
+}
+
+function del() {
+  display.value = display.value.slice(0, -1);
+}
+
+function calculate() {
+  try {
+    display.value = eval(display.value);
+  } catch {
+    display.value = "Error";
+  }
+}
+</script>
+
+</body>
+</html>
